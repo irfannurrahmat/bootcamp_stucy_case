@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem
+        id="train_transportation_menu"
+        name="Train Transportation"
+        sequence="1"/>
+
+    <menuitem
+        id="train_menu"
+        name="Train"
+        sequence="1"
+        parent="train_transportation_menu"/>
+
+    <menuitem
+        id="train_train_menu"
+        name="Train"
+        sequence="1"
+        parent="train_menu"
+        action="train_train_action"
+        groups="train_transportation.group_admin"/>
+
+    <menuitem
+        id="train_schedule_menu"
+        name="Schedule"
+        sequence="2"
+        parent="train_menu"
+        action="train_schedule_action"/>
+
+
+    <menuitem
+        id="configuration_menu"
+        name="Configuration"
+        sequence="2"
+        parent="train_transportation_menu"/>
+
+    <menuitem
+        id="train_city_menu"
+        name="City"
+        sequence="1"
+        parent="configuration_menu"
+        action="train_city_action"
+        groups="train_transportation.group_admin"/>
+
+    <menuitem
+        id="train_station_menu"
+        name="Station"
+        sequence="2"
+        parent="configuration_menu"
+        action="train_station_action"
+        groups="train_transportation.group_admin"/>
+
+    <menuitem
+        id="passenger_menu"
+        name="Passengers"
+        sequence="3"
+        parent="configuration_menu"
+        action="passenger_action"/>
+
+    <menuitem
+        id="machinist_menu"
+        name="Machinists"
+        sequence="4"
+        parent="configuration_menu"
+        action="machinist_action"/>
+
+</odoo>

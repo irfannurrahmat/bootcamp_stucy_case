@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record id="train_city_view_tree" model="ir.ui.view">
+            <field name="name">train.city.view.tree</field>
+            <field name="model">train.city</field>
+            <field name="arch" type="xml">
+                <tree string="Train City">
+                    <field name="name" />
+                    <field name="code" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="train_city_view_form" model="ir.ui.view">
+            <field name="name">train.city.view.form</field>
+            <field name="model">train.city</field>
+            <field name="arch" type="xml">
+                <form string="Train City">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />
+                                <field name="code" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="train_city_action" model="ir.actions.act_window">
+            <field name="name">Train City</field>
+            <field name="res_model">train.city</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        
+        <record id="train_station_view_tree" model="ir.ui.view">
+            <field name="name">train.station.view.tree</field>
+            <field name="model">train.station</field>
+            <field name="arch" type="xml">
+                <tree string="Train Station">
+                    <field name="code" />
+                    <field name="name" />
+                    <field name="city_id" />
+                    <field name="address" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="train_station_view_form" model="ir.ui.view">
+            <field name="name">train.station.view.form</field>
+            <field name="model">train.station</field>
+            <field name="arch" type="xml">
+                <form string="Train Station">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="code" />
+                                <field name="name" />
+                            </group>
+                            <group>
+                                <field name="city_id" />
+                                <field name="address" />
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="train_station_action" model="ir.actions.act_window">
+            <field name="name">Train Station</field>
+            <field name="res_model">train.station</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+
+        <record id="train_train_view_tree" model="ir.ui.view">
+            <field name="name">train.train.view.tree</field>
+            <field name="model">train.train</field>
+            <field name="arch" type="xml">
+                <tree string="Train">
+                    <field name="name" />
+                    <field name="code" />
+                    <field name="capacity" />
+                    <field name="state" />
+                    <field name="active" />
+                </tree>
+            </field>
+        </record>
+
+        <record id="train_train_view_form" model="ir.ui.view">
+            <field name="name">train.train.view.form</field>
+            <field name="model">train.train</field>
+            <field name="arch" type="xml">
+                <form string="Train">
+                    <sheet>
+                        <group>
+                            <group>
+                                <field name="name" />   
+                                <field name="code" />
+                                <field name="state" widget="radio"/>
+                            </group>
+                            <group>
+                                <field name="capacity" />
+                                <field name="active"/>
+                            </group>
+                        </group>
+                        <notebook>
+                            <page name="schedule" string="Train Schedule">
+                                <field name="schedule_line" mode="tree" nolabel="1">
+                                    <tree string="Train Schedule" editable="bottom">
+                                        <field name="origin_id" />
+                                        <field name="destination_id" />
+                                        <field name="schedule_time" />
+                                        <field name="duration" />
+                                        <field name="arrival_time" />
+                                        <field name="train_id" />
+                                        <field name="capacity" />
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="train_train_action" model="ir.actions.act_window">
+            <field name="name">Train Train</field>
+            <field name="res_model">train.train</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+
+        
+
+        <record id="train_schedule_view_tree" model="ir.ui.view">
+            <field name="name">train.schedule.view.tree</field>
+            <field name="model">train.schedule</field>
+            <field name="arch" type="xml">
+                <tree string="Train Schedule">
+                    <field name="code" />
+                    <field name="origin_id" />
+                    <field name="destination_id" />
+                    <field name="schedule_time" />
+                    <field name="duration" />
+                    <field name="arrival_time" />
+                    <field name="train_id" />
+                    <field name="capacity" />                
+                </tree>
+            </field>
+        </record>
+
+        <record id="train_schedule_view_form" model="ir.ui.view">
+            <field name="name">train.schedule.view.form</field>
+            <field name="model">train.schedule</field>
+            <field name="arch" type="xml">
+                <form string="Train Schedule">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="code" />
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="origin_id" />
+                                <field name="destination_id" />
+                                <field name="schedule_time" />
+                                <field name="duration" />
+                            </group>
+                            <group>
+                                <field name="arrival_time" />
+                                <field name="train_id" />
+                                <field name="capacity" /> 
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <record id="train_schedule_view_form_calendar" model="ir.ui.view">
+            <field name="name">train.schedule.calendar</field>
+            <field name="model">train.schedule</field>
+            <field name="arch" type="xml">
+                <calendar string="Train Schedule" date_start="schedule_time" date_stop="arrival_time" mode="month" quick_create="False" event_open_popup="True">
+                    <field name="origin_id" filters="1"/>
+                    <field name="destination_id" filters="1"/>
+                    <field name="train_id" />
+                </calendar>
+            </field>
+        </record>
+
+        <record id="train_schedule_action" model="ir.actions.act_window">
+            <field name="name">Train Schedule</field>
+            <field name="res_model">train.schedule</field>
+            <field name="view_mode">tree,form,calendar</field>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        
+
+    </data>
+
+
+</odoo>

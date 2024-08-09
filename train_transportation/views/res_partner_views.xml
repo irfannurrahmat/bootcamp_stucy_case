@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="res_partner_inherit_res_partner" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Adding Information">
+                    <group>
+                        <field name="train_state" />
+                        <field name="identity" required="train_state, '!=', False" />
+                        <field name="gender" required="train_state, '!=', False"/>
+                        <field name="born_date" required="train_state, '!=', False"/>
+                    </group>
+                </page>
+            </notebook>
+        </field>
+    </record>
+
+    <record id="passenger_action" model="ir.actions.act_window">
+        <field name="name">Passengers</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('train_state', '=', 'passenger')]</field>
+        <field name="context">{'default_train_state': 'passenger'}</field>
+    </record>
+
+    <record id="machinist_action" model="ir.actions.act_window">
+        <field name="name">Machinists</field>
+        <field name="res_model">res.partner</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[('train_state', '=', 'machinist')]</field>
+        <field name="context">{'default_train_state': 'machinist'}</field>
+    </record>
+
+</odoo>
